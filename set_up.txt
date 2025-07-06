@@ -1,0 +1,8 @@
+python -m pip install --upgrade pip
+pip install flask
+pip install requests
+pip install spacy
+python -m spacy download en_core_web_sm
+pip install faiss-cpu
+pip install sentence-transformers
+python t.py

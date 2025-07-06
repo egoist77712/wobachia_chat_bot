@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+ 
+  <!-- 导入 mCustomScrollbar CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css">
+  <!-- 导入 jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- 导入 mCustomScrollbar JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js"></script>
+  <!-- 导入你的自定义 CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='scss/style.css') }}">
+
+  <style>
+
+    textarea::placeholder {
+    font-size: 12px; /* 你想要的小字体大小 */
+  }
+     .center-container {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .center-button {
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            margin: 10px; /* 按钮之间的间距 */
+        }
+        .center-button:hover {
+            background-color: #0056b3;
+        }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    /* 初始状态：div元素完全透明 */
+    .container-01 {
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    /* 淡入动画定义 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 10秒后触发的动画 */
+    .fade-in {
+      animation: fadeIn 2s forwards;
+    }
+
+        .container-01 {
+            left:150px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            top: 35px;
+            width: 40%;
+            height: 80vh;
+ 
+        }
+        .container-01 h2 {
+            position: relative;
+            width: 640px;
+            text-align: center;
+            z-index: 11;
+            color: black;
+            font-size: 25px;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 15px;
+            padding: 5px 8px;
+            font-size: 25px;
+            box-shadow: -6px -6px 20px rgba(255,255,255,1),
+                        6px 6px 20px rgba(0,0,0,0.1);
+                        background: #ebf5fc;
+        }
+        .container-01 .neumorphic-card {
+            width: 640px;
+            height: 700px;
+            padding: 20px 30px;
+            background: #ebf5fc;
+            border-radius: 40px;
+            box-shadow: -6px -6px 20px rgba(255,255,255,1),
+                        6px 6px 20px rgba(0,0,0,0.1);
+        }
+        .container-01 .neumorphic-card:hover {
+            box-shadow: inset -6px -6px 10px rgba(255,255,255,0.5),
+                        inset 6px 6px 20px rgba(0,0,0,0.05);
+        }
+        .container-01 .neumorphic-card .imgBox {
+            position: relative;
+            text-align: center;
+        }
+        .container-01 .neumorphic-card .imgBox i {
+            font-size: max(80px);
+            color: black;
+        }
+        .container-01 .neumorphic-card .contentBox {
+            position: relative;
+            margin-top: 0px;
+            text-align:center;	
+        
+        }
+        .container-01 .neumorphic-card .contentBox h3 {
+            color: black;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.4em;
+        }
+        .container-01 .neumorphic-card .contentBox p {
+            color: black;
+            font-size: 1.4em;
+        
+        }
+        .container-01 .neumorphic-card .contentBox a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 40px;
+            color: black;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: -4px -4px 15px rgba(255,255,255,1),
+                        4px 4px 15px rgba(0,0,0,0.1);
+        }
+        .container-01 .neumorphic-card .contentBox a:hover {
+            box-shadow: inset-4px -4px 10px rgba(255,255,255,0.5),
+                        inset 4px 4px 10px rgba(0,0,0,0.1);
+        }
+        .container-01 .neumorphic-card .contentBox a:hover span {
+            display: block;
+            transform: scale(0.98);	
+        }
+        .container-01 .neumorphic-card:hover .imgBox,
+        .container-01 .neumorphic-card:hover .contentBox {
+            transform: scale(0.98);
+        }
+        .container-01 p {
+            z-index: 12;
+            margin: 20px auto 10px;
+            position: relative;
+            color: black;
+        }
+        .container-01 p span {
+            font-weight: 700;
+        }
+
+        #re_new{
+          position: absolute;
+          top:90%;
+          left: 90%;
+        }
+        .message-box{
+          top: -20px; 
+          height: 100px;
+        }
+        .chat{
+          height: 690px; 
+          background-color: #fff; 
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .avenue-messenger{
+          top: 150px;
+          left: 5%;
+        }
+        .messages{
+          max-height: 500px;
+        }
+        #message-input{
+          overflow: hidden;
+        }
+
+  </style>
+    <style>
+    @media (max-width: 1600px) {
+        #re_new{
+          position: absolute;
+          top:93%;
+          left: 90%;
+        }
+        .container-01 {
+            left:200px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            top: 360px;
+            width: 20%;
+            height: 100px;
+ 
+        }
+
+        .chat{
+          height: 490px; 
+          background-color: #fff; 
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .avenue-messenger{
+          top: 160px;
+          left: 30px;
+          width: 500px;
+        }
+ 
+        .container-01 .neumorphic-card {
+            width: 440px;
+            height: 500px;
+            padding: 20px 30px;
+            background: #ebf5fc;
+            border-radius: 40px;
+            box-shadow: -6px -6px 20px rgba(255,255,255,1),
+                        6px 6px 20px rgba(0,0,0,0.1);
+        }
+        .contentBox{
+          top: -60px;
+
+        }
+        .container-01 .neumorphic-card .contentBox h3 {
+            color: black;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.1em;
+        }
+        .container-01 .neumorphic-card .contentBox p {
+            color: black;
+            font-size: 1.1em;
+        
+        }
+#message-input{
+          width: 400px;
+          overflow: hidden;
+        }
+    }
+  </style>
+</head>
+<body>
+  <div class="center-container" style="display:none;">
+    
+    <h1>You have completed your interaction with the AI chatbot. Please click on the button below.</h1>
+    <a href="https://ntusingapore.qualtrics.com/jfe/form/SV_0VPaNdMtdMe33kq"><button class="center-button" >Back to qualtrics</button></a>
+</div>
+    <br><br><br><br><br>
+    <div class="container-01" id="Introduction">
+		<div class="neumorphic-card">
+			<div class="imgBox">
+				<i class="fa fa-pencil-ruler"></i>
+			</div>
+			<div class="contentBox" ><br><br><br>
+        <p>   <b>{{role}} is here to {{word}} you</b>. <br>
+        Ask <b>{{role}}</b> about your concerns regarding Project Wolbachia!</p>
+        <br>
+           <b><p>Introduction about Project Wolbachia</p></b> 
+
+				<p>'Project Wolbachia-Singapore' is a project conducted by National Environmental Agency. The project uses male Wolbachia-carrying Aedes aegypti mosquitoes to suppress the population of dengue-transmiting Aedes aegypti mosquitoes in the community. Wolbachia is a natural bacterium found in more than 60% of insect species, such as butterflies, fruit flies, Aedes albopictus and Culex mosquitoes. When these male mosquitoes mate with urban Aedes aegypti female mosquitoes at the release sites, their eggs do not hatch and there will be no offspring. Over time, continued releases of male Wolbachia-Aedes mosquitoes will lead to a decline in urban Aedes aegypti populations. This not only reduces the risk of dengue, but also of other Aedes aegypti-borne diseases such as Zika and Chikungunya.
+          
+    </p>
+    
+			</div>
+		</div>
+
+	</div>
+	<div id="re_new" ><img src="{{ url_for('static',filename='img/renew.png')}}" width="35px" height="35px" alt=""></div>
+<section class="avenue-messenger">
+    <div class="menu">
+      <div class="items"><span>
+        <a href="#" title="Minimize">&mdash;</a><br>
+        <a href="#" title="End Chat">&#10005;</a>
+      </span></div>
+    
+    </div>
+    <div class="agent-face">
+      <div class="half">
+        <img class="agent circle" src="{{image}}" alt="Jesse Tino">
+      </div>
+    </div>
+    <div class="chat" >
+      <div class="chat-title">
+        <h1 style="font-size: large;"><b>{{role}}</b></h1>
+      </div>
+      <div class="messages">
+        <div class="messages-content mCSB_container"></div>
+      </div>
+      <div class="message-box">
+        <textarea type="text"  class="message-input" id="message-input"  readonly></textarea>
+        <button type="submit" class="message-submit">Send</button>
+      </div>
+    </div>
+</section>
+<script>
+    var user_ID=prompt('Please enter your ID:');
+    while(!user_ID) {
+    user_ID = prompt('ID cannot be empty, please enter your ID');
+    }
+    let timeLeft = 30; // 倒计时时间，单位为秒
+    const textarea = document.getElementById('message-input');
+    var user_message= [];
+    var chat_bot_message=[];
+    // 每秒更新一次 placeholder 内容
+    setTimeout(function() {
+    const countdownInterval = setInterval(() => {
+      if (timeLeft > 0) {
+        textarea.placeholder = `Ask {{role}} questions in ${timeLeft} seconds.`;
+        timeLeft--;
+      } else {
+        clearInterval(countdownInterval);
+        textarea.removeAttribute('readonly');
+        textarea.placeholder = 'Type question...';
+      }
+    }, 1000); // 每1000毫秒 = 1秒执行一次
+    }, 20000);
+
+  </script>
+<script>
+$(document).ready(function() {
+    var $messages = $('.messages-content'),
+        d, h, m,
+        i = 0;
+        limit_message=0;
+    var previous_question='';
+    var strat_content_time=[14000,1000]
+    $messages.mCustomScrollbar();
+
+    setTimeout(function() {
+        fakeMessage();
+    }, 200);
+    setTimeout(function() {
+        fakeMessage();
+    }, 400);
+    setTimeout(function() {
+        fakeMessage();
+    }, 52000);
+    setTimeout(function() {
+        document.getElementById('Introduction').classList.add('fade-in');
+    }, 17000);
+
+    m="{{ m }}"
+    var Fake = [
+       
+        m,
+        'First, let me introduce you what is Project Wolbachia. Please spend some time to read the information about Project Wolbachia on the left side.',
+        'After reading the description, Do you have any concerns about "Project Wolbachia-Singapore"? Please feel free to ask me any question about the project.',
+        'Thank you for your time! It has been a pleasure talking to you about Project Wolbachia-Singapore. Now you are required to finish the second part of the survey. '
+
+    ]; 
+
+    function updateScrollbar() {
+        $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+            scrollInertia: 10,
+            timeout: 0
+        });
+    }
+  
+    function setDate() {
+        d = new Date();
+        if (m != d.getMinutes()) {
+            m = d.getMinutes();
+            $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
+            $('<div class="checkmark-sent-delivered">&check;</div>').appendTo($('.message:last'));
+            $('<div class="checkmark-read">&check;</div>').appendTo($('.message:last'));
+        }
+    }
+    function saveCSV() {
+      // 检查用户是否输入了有效的 user_ID
+      if (!user_ID) {
+        alert("User ID is required!");
+        return;
+      }
+
+      // 添加表头
+      let csv = "User_ID,User,Bot\n";
+
+      // 遍历对话记录并生成每一行 CSV
+      for (let i = 0; i < user_message.length; i++) {
+        let user = user_message[i] || "";
+        let bot = chat_bot_message[i] || "";
+        csv += `${user_ID},"${user}","${bot}"\n`;
+      }
+
+      // 创建 Blob 对象并生成下载链接
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "chat_log_"+user_ID+".csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  
+    function fakeMessage() {
+        if ($('.message-input').val() != '') {
+            return false;
+        }
+        $('<div class="message loading new"><figure class="avatar"><img src="{{ image }}" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+        updateScrollbar();
+
+        setTimeout(function() {
+            $('.message.loading').remove();
+            $('<div class="message new shart"><figure class="avatar"><img src="{{ image }}" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+            setDate();
+            updateScrollbar();
+            i++;
+        }, strat_content_time[i-1]);
+    }
+
+    function insertMessage() {
+        textarea.setAttribute('readonly', '');
+        textarea.placeholder = '';
+        var msg = $('.message-input').val();
+
+        
+        user_message.push(msg);
+
+        if ($.trim(msg) == '') {
+            return false;
+        }
+
+        textarea.style.height = '20px';
+
+        $('<div class="message message-personal" style="max-width: 300px; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; " >' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        $('.message-input').val(null);
+        $('<div class="message loading new"><figure class="avatar"><img src="{{ image }}" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+        updateScrollbar();
+        limit_message+=1;
+        if(limit_message>=1){
+                  textarea.placeholder = 'You have 7 questions remaining';
+
+                }
+                if(limit_message>=2){
+                  
+                  textarea.placeholder = 'You have 6 questions remaining';
+
+                }
+                if(limit_message>=3){
+                  
+                  textarea.placeholder = 'You have 5 questions remaining';
+
+                }
+                if(limit_message>=4){
+                  
+                  textarea.placeholder = 'You have 4 questions remaining';
+
+                }
+                if(limit_message>=5){
+                  
+                  textarea.placeholder = 'You have 3 questions remaining';
+
+                }
+                if(limit_message>=6){
+                  
+                  textarea.placeholder = 'You have 2 questions remaining';
+
+                }
+                if(limit_message>=7){
+                  
+                  textarea.placeholder = 'You have 1 question remaining';
+
+                }
+                if(limit_message>=8){
+                  
+                  textarea.placeholder = 'You have 0 question remaining';
+
+                }
+        $.ajax({
+            type: 'POST',
+            url: '/get_message',
+            data: { message: msg, previous_question:previous_question},
+            success: function(response) {
+              textarea.removeAttribute('readonly');
+
+                    if(limit_message>=1){
+                  textarea.placeholder = 'You have 7 questions remaining';
+
+                }
+                if(limit_message>=2){
+                  
+                  textarea.placeholder = 'You have 6 questions remaining';
+
+                }
+                if(limit_message>=3){
+                  
+                  textarea.placeholder = 'You have 5 questions remaining';
+
+                }
+                if(limit_message>=4){
+                  
+                  textarea.placeholder = 'You have 4 questions remaining';
+
+                }
+                if(limit_message>=5){
+                  
+                  textarea.placeholder = 'You have 3 questions remaining';
+
+                }
+                if(limit_message>=6){
+                  
+                  textarea.placeholder = 'You have 2 questions remaining';
+
+                }
+                if(limit_message>=7){
+                  
+                  textarea.placeholder = 'You have 1 question remaining';
+
+                }
+                if(limit_message>=8){
+                  
+                  textarea.placeholder = 'You have 0 question remaining';
+
+                }
+                $('.message.loading').remove();
+                var RasaMessage = response.message;
+                $('<div class="message new shart"><figure class="avatar"><img src="{{image}}" /></figure>' + RasaMessage + '</div>').appendTo($('.mCSB_container')).addClass('new');
+                setDate();
+                updateScrollbar();
+                
+               
+               
+                previous_question=msg;
+                chat_bot_message.push(RasaMessage);
+                
+                if (limit_message>=8){
+                textarea.setAttribute('readonly', '');
+                limit_message=0
+
+                setTimeout(function() {
+                  $('<div class="message loading new"><figure class="avatar"><img src="{{ image }}" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+                  }, 500);
+                    updateScrollbar();
+
+                    setTimeout(function() {
+                        $('.message.loading').remove();
+                        $('<div class="message new shart"><figure class="avatar"><img src="{{ image }}" /></figure>' + 'Thank you for your time! It’s been a pleasure discussing Project Wolbachia–Singapore with you.<br><br> You will be automatically redirected to the second part of the study in 1 minute.' + '</div>').appendTo($('.mCSB_container')).addClass('new');
+                        setDate();
+                        updateScrollbar();
+                    }, 10000);
+
+                setTimeout(() => {
+                saveCSV();
+                
+                document.getElementById("Introduction").style.display = "none";
+
+                document.querySelectorAll(".avenue-messenger").forEach(element => {
+                    element.style.display = "none";
+                });
+                document.querySelectorAll(".center-container").forEach(element => {
+                    element.style.display = "inline";
+                });
+            }, 60000); // 10000 毫秒 = 10 秒
+                }
+            }
+        });
+        
+    }
+
+    $('.message-submit').click(function() {
+        
+        
+        insertMessage();
+     
+    });
+    $('#re_new').click(function() {
+        
+        textarea.removeAttribute('readonly');
+        
+     
+    });
+    $(window).on('keydown', function(e) {
+        if (e.which == 13) {
+            insertMessage();
+            return false;
+        }
+    });
+
+    $('.button').click(function() {
+        $('.menu .items span').toggleClass('active');
+        $('.menu .button').toggleClass('active');
+    });
+});
+
+
+
+</script>
+
+<script>
+  const textarea_t = document.getElementById('message-input');
+  const textarea_box=document.getElementsByClassName('message-box');
+
+  var area_len=45
+  textarea_t.addEventListener('input', () => {
+    if (textarea_t.value.length >  area_len*2) {
+      textarea_t.style.height = '70px';
+      textarea_box.style.height = '70px';
+      textarea_box.style.top = '0px';
+    }
+    else if (textarea_t.value.length >  area_len) {
+      textarea_t.style.height = '35px';
+    } else {
+      textarea_t.style.height = '20px';
+      textarea_box.style.top = '-20px';
+    }
+  });
+</script>
+</body>
+</html>
